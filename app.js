@@ -1,8 +1,24 @@
+// Variables and Selections
+
 const auth = "563492ad6f917000010000013143505aa80f498dbc47318fd4ed2a3f";
 const gallery = document.querySelector(".gallery");
 const searchInput = document.querySelector(".search-input");
-const submitBtn = document.querySelector(".submit-btn");
+const form = document.querySelector(".search-form");
 let searchValue;
+
+// Event Listeners
+
+searchInput.addEventListener("input", updateInput);
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  searchPhotos(searchValue);
+});
+
+// Functions
+
+function updateInput(e) {
+  searchValue = e.target.value;
+}
 
 async function curatedPhotos() {
   const dataFetch = await fetch(
